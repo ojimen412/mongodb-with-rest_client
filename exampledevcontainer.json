@@ -1,0 +1,29 @@
+{
+  "name": "Mongo-CRUD-connection",
+  "image": "mcr.microsoft.com/vscode/devcontainers/base:0-focal",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"
+    },
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-typescript-next"
+      ]
+    }
+  },
+  "forwardPorts": [3000],
+  "unused_example": [
+    {
+      "remoteEnv": {
+        "MONGO_URI": "${localEnv:MONGO_URI}"
+      }
+    }
+  ],
+  "postCreateCommand": ["npm install", "echo 'MONGO_URI=${MONGO_URI}' > .env"],
+  "shutdownAction": "none"
+}
